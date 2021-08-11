@@ -3,17 +3,17 @@ import * as http from "http";
 import * as WebSocket from "ws";
 import FlexSearch from "flexsearch";
 
-import cityList from "./data/cityList.json";
+// import cityList from "./data/cityList.json";
 
-const index = FlexSearch.create({
-  profile: "balance",
-  doc: {
-    id: "id",
-    field: ["name", "state", "country"],
-  },
-});
+// const index = FlexSearch.create({
+//   profile: "balance",
+//   doc: {
+//     id: "id",
+//     field: ["name", "state", "country"],
+//   },
+// });
 
-index.add(cityList);
+// index.add(cityList);
 
 const app = express();
 
@@ -26,7 +26,8 @@ const wss = new WebSocket.Server({ server });
 wss.on("connection", (ws: WebSocket) => {
   //connection is up, let's add a simple simple event
   ws.on("message", (message: string) => {
-    const results = index.search(message);
+    const results = ["test"];
+    // const results = index.search(message);
     ws.send(JSON.stringify(results));
   });
 });
