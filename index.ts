@@ -37,7 +37,7 @@ app.get("/country/:id", function (req, res) {
 });
 
 //start our server
-const listener = server.listen(process.env.port || 8999, () => {
+const listener = server.listen(process.env.PORT || 8999, () => {
   const address = listener.address() as WebSocket.AddressInfo;
   console.log(`Server started on port ${address.port}`);
 });
